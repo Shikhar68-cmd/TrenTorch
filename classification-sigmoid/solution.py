@@ -11,10 +11,4 @@ def sigmoid(z: np.ndarray) -> np.ndarray:
     # returns nan.
     
     z = np.clip(z, -500, 500)
-
-    sig_Z = np.zeros_like(z, dtype=float)
-
-    for i in range(len(z)):
-        sig_Z[i] = 1 / (1 + np.exp(-z[i]))
-
-    return sig_Z
+    return 1 / (1 + np.exp(-z))
