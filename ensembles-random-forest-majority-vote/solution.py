@@ -17,7 +17,9 @@ def random_forest_predict(trees: list[dict], input: np.ndarray) -> np.ndarray:
     # TODO: Run predict_tree() for every tree in trees, collect the
     # predictions into shape (n_trees, n_samples), then for each sample
     # (each column) take the class with the most votes across trees.
-
+    if len(trees) == 0:
+        raise ValueError("Random Forest must contain at least one tree")
+    
     votes = np.array([predict_tree(tree , input) for tree in trees])
 
     predictions = np.empty(input.shape[0] , dtype = int)
